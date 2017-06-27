@@ -92,12 +92,14 @@ print('Build model...')
 X = tf.placeholder(tf.float32, [None, 28 * 28])
 
 # 建立隱藏層
-h1 = layer(512, 28 * 28, X, tf.nn.relu)
+h1 = layer(1024, 28 * 28, X, tf.nn.relu)
 
-h2 = layer(256, 512, h1, tf.nn.relu)
+h2 = layer(512, 1024, h1, tf.nn.relu)
+
+h3 = layer(256, 512, h2, tf.nn.relu)
 
 # 建立輸出層
-y = layer(10, 256, h2)
+y = layer(10, 256, h3)
 
 # ==========================================================
 #
