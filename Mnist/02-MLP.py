@@ -13,6 +13,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow.examples.tutorials.mnist.input_data as input_data
+import os
 
 
 # ==========================================================
@@ -21,6 +22,7 @@ import tensorflow.examples.tutorials.mnist.input_data as input_data
 #
 # ==========================================================
 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 
@@ -161,6 +163,7 @@ for epoch in range(trainEpochs):
     print("Train Epoch:", '%02d' % (epoch + 1), "Loss=", "{:.9f}".format(loss), " Accuracy=", "{:.05f}".format(acc))
 
 duration = time() - startTime
+sess.close()
 print("Train Finished takes:", duration)
 
 # ==========================================================
@@ -197,7 +200,6 @@ index = df[df.label != df.predict].index
 
 for i in index[:10]:
     print('真實值為: ', label[i], '預測值為: ', prediction[i])
-
 
 plot_images_labels_prediction(X_test[index], label[index], prediction[index], idx=0)
 print()
