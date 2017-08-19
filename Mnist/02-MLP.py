@@ -163,7 +163,7 @@ for epoch in range(trainEpochs):
     print("Train Epoch:", '%02d' % (epoch + 1), "Loss=", "{:.9f}".format(loss), " Accuracy=", "{:.05f}".format(acc))
 
 duration = time() - startTime
-sess.close()
+
 print("Train Finished takes:", duration)
 
 # ==========================================================
@@ -185,7 +185,7 @@ plt.legend(['acc'])
 plt.show()
 
 print('Accuracy : ', sess.run(accuracy, feed_dict={X: X_test, y_label: y_test}))
-
+sess.close()
 # ==========================================================
 #
 # 進行預測
